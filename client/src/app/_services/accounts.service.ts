@@ -18,6 +18,19 @@ export class AccountsService {
           localStorage.setItem('user',JSON.stringify(user));
           this.currentUser.set(user);
         }
+        return user;
+      })
+    );
+  }
+
+  register(model: any){
+    return this.http.post<User>(this.baseurl + 'account/register', model).pipe(
+      map(user => {
+        if(user){
+          localStorage.setItem('user',JSON.stringify(user));
+          this.currentUser.set(user);
+        }
+        return user;
       })
     );
   }
