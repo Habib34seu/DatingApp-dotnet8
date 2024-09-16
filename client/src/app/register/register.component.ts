@@ -1,6 +1,7 @@
 import { Component, inject, input, output} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountsService } from '../_services/accounts.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,9 @@ import { AccountsService } from '../_services/accounts.service';
 })
 export class RegisterComponent {
   private accountService = inject(AccountsService);
+  private toaster = inject(ToastrService);
   cancelRegister = output<boolean>();
+
   model : any ={};
 
 
@@ -21,7 +24,7 @@ export class RegisterComponent {
       console.log(response);
       this.cancel();
     },
-    error: error=> console.log(error)
+    error: error=> this.toaster.error(error.error)
     
    })
  }
