@@ -1,4 +1,5 @@
 ﻿using API.Data;
+using API.Data.Repositories;
 using API.Interfaces;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ public static class ApplicationServiceExtensions
 
         services.AddCors();
         services.AddScoped<ITokenServices, TokenServices>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
 
