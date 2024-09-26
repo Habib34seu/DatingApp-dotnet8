@@ -39,6 +39,7 @@ public class AccountController(DataContext context,
             Username = user.UserName,
             Token = tokenServices.CreateToken(user),
             KnownAs = user.KnownAs,
+            Gender = user.Gender,
         };
     }
 
@@ -66,6 +67,7 @@ public class AccountController(DataContext context,
             Username = user.UserName,
             KnownAs = user.KnownAs,
             Token = tokenServices.CreateToken(user),
+            Gender = user.Gender,
             PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url
         };
     }
